@@ -1,6 +1,6 @@
 //
 //  EventList.swift
-//  Calender
+//  Calendar
 //
 //  Created by tsonobe on 2023/10/11.
 //
@@ -22,14 +22,10 @@ struct EventList: View {
     }
     
     @State private var isAddEventSheetPresented: Bool = false
-    @State var selectedEvent: Event? = nil
-
     
     var body: some View {
         VStack{
             HStack {
-                let _ = print(filterdEvents)
-                
                 Text(DateFormatter.shortDateForm.string(from: selectedDate))
                     .font(.title3)
                     .bold()
@@ -42,15 +38,13 @@ struct EventList: View {
             }
             ScrollView{
                 if filterdEvents.isEmpty {
-                    ContentUnavailableView {Label("No Schedule", systemImage: "plus")}
+                    ContentUnavailableView {Label("No Event", systemImage: "plus")}
                         .onTapGesture {isAddEventSheetPresented.toggle()}
                 }
                 ForEach(filterdEvents) { event in
                     EventRow(event: event)
                         .contextMenu(menuItems: {
                             Button {
-                                selectedEvent = event
-                                let _ = print(selectedEvent!)
                                 isPresentedEdit.toggle()
                             } label: {
                                 Label("Edit", systemImage: "pencil")
@@ -61,14 +55,14 @@ struct EventList: View {
                                 Label("Delete", systemImage: "trash")
                             }
                         })
+                        .sheet(isPresented: $isPresentedEdit){
+                                EditEvent(selectedEvent: event)
+                        }
                 }
             }
         }
         .sheet(isPresented: $isAddEventSheetPresented) {
             AddEvent(selectedDate: selectedDate)
-        }
-        .sheet(isPresented: $isPresentedEdit){
-            EditEvent(selectedEvent: selectedEvent)
         }
     }
     

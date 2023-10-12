@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Calender
+//  Calendar
 //
 //  Created by tsonobe on 2023/10/11.
 //
@@ -9,12 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     @State var selectedMonth: Date = Date()
+    @State var selectedDate: Date = Date()
     
     var body: some View {
         NavigationStack{
             VStack{
-                MonthSelector(selectedMonth: $selectedMonth)
-                MonthlyCalendar(selectedMonth: $selectedMonth)
+                MonthSelector(selectedMonth: $selectedMonth, selectedDate: $selectedDate)
+                MonthlyCalendar(selectedMonth: $selectedMonth, selectedDate: $selectedDate)
             }
             .padding()
         }
@@ -31,14 +32,23 @@ struct ContentView: View {
 
 struct MonthSelector: View {
     @Binding var selectedMonth: Date
-    
+    @Binding var selectedDate: Date
+
     var body: some View {
-        HStack(alignment: .center) {
-            monthButton(direction: .backward)
-            Spacer()
-            currentMonthAndYear
-            Spacer()
-            monthButton(direction: .forward)
+        VStack(alignment: .trailing) {
+            Button(action: {
+                selectedMonth = Date()
+                selectedDate = Date()
+            }, label: {
+                Text("Today")
+            })
+            HStack(alignment: .center) {
+                monthButton(direction: .backward)
+                Spacer()
+                currentMonthAndYear
+                Spacer()
+                monthButton(direction: .forward)
+            }
         }
     }
     

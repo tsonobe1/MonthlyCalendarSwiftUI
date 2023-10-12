@@ -1,6 +1,6 @@
 //
 //  AddEvent.swift
-//  Calender
+//  Calendar
 //
 //  Created by tsonobe on 2023/10/11.
 //
@@ -65,8 +65,3 @@ struct AddEvent: View {
         }
     }
 }
-
-
-//#Preview {
-//    AddEvent()
-//}
