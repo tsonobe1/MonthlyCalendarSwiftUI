@@ -22,6 +22,7 @@
 		0C8764A92AD6C5020037432D /* MonthlyCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8764A82AD6C5020037432D /* MonthlyCalendar.swift */; };
 		0C8764AB2AD6CD450037432D /* CustomBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8764AA2AD6CD450037432D /* CustomBackground.swift */; };
 		0C8764AE2AD6CF8A0037432D /* AddEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8764AD2AD6CF8A0037432D /* AddEvent.swift */; };
+		0CD29EF52AE047590037F9C8 /* MonthSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD29EF42AE047590037F9C8 /* MonthSelector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		0C8764A82AD6C5020037432D /* MonthlyCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendar.swift; sourceTree = "<group>"; };
 		0C8764AA2AD6CD450037432D /* CustomBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackground.swift; sourceTree = "<group>"; };
 		0C8764AD2AD6CF8A0037432D /* AddEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEvent.swift; sourceTree = "<group>"; };
+		0CD29EF42AE047590037F9C8 /* MonthSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSelector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,15 +113,15 @@
 		0C8764742AD6B9220037432D /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				0C8764792AD6B9220037432D /* Model.swift */,
 				0C8764752AD6B9220037432D /* CalendarApp.swift */,
 				0C8764772AD6B9220037432D /* ContentView.swift */,
+				0CD29EF42AE047590037F9C8 /* MonthSelector.swift */,
 				0C8764A82AD6C5020037432D /* MonthlyCalendar.swift */,
-				0C8764A62AD6C4F70037432D /* EventList.swift */,
-				0C8764AC2AD6CF760037432D /* New Group */,
+				0C8764AC2AD6CF760037432D /* Event */,
 				0C8764AA2AD6CD450037432D /* CustomBackground.swift */,
 				0C8764A42AD6BA660037432D /* Extension.swift */,
 				0C8764A22AD6BA0C0037432D /* CreateDateOfMonth.swift */,
-				0C8764792AD6B9220037432D /* Model.swift */,
 				0C87647B2AD6B9240037432D /* Assets.xcassets */,
 				0C87647D2AD6B9240037432D /* Calendar.entitlements */,
 				0C87647E2AD6B9240037432D /* Preview Content */,
@@ -152,13 +154,14 @@
 			path = CalenderUITests;
 			sourceTree = "<group>";
 		};
-		0C8764AC2AD6CF760037432D /* New Group */ = {
+		0C8764AC2AD6CF760037432D /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				0C8764A62AD6C4F70037432D /* EventList.swift */,
 				0C8764AD2AD6CF8A0037432D /* AddEvent.swift */,
 				0C6C2EA72AD82F1100F126BC /* EditEvent.swift */,
 			);
-			path = "New Group";
+			path = Event;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,6 +300,7 @@
 				0C6C2EA82AD82F1100F126BC /* EditEvent.swift in Sources */,
 				0C8764A92AD6C5020037432D /* MonthlyCalendar.swift in Sources */,
 				0C8764782AD6B9220037432D /* ContentView.swift in Sources */,
+				0CD29EF52AE047590037F9C8 /* MonthSelector.swift in Sources */,
 				0C8764AB2AD6CD450037432D /* CustomBackground.swift in Sources */,
 				0C87647A2AD6B9220037432D /* Model.swift in Sources */,
 				0C8764AE2AD6CF8A0037432D /* AddEvent.swift in Sources */,

@@ -53,14 +53,7 @@ extension DateFormatter {
         formatter.dateFormat = "MMM"
         return formatter
     }
-    
-    // Tue
-    static var weekdayFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEE"
-        return formatter
-    }
-    
+
     // 12/31/23
     static var shortDateForm: DateFormatter {
         let formatter = DateFormatter()
@@ -72,20 +65,6 @@ extension DateFormatter {
     static var shortTimeForm: DateFormatter {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
-        return formatter
-    }
-     
-    // 02/28
-    static var nonZeroDayMonthForm: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "M/d"
-        return formatter
-    }
-    
-    // 02/28
-    static var dayMonthForm: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.setLocalizedDateFormatFromTemplate("MM/dd")
         return formatter
     }
 }

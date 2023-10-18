@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Eventの背景
 struct EventBackground: View {
     let color: Color
     var body: some View {

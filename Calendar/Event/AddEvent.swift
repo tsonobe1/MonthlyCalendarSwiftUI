@@ -1,38 +1,37 @@
 //
-//  EditEvent.swift
+//  AddEvent.swift
 //  Calendar
 //
-//  Created by tsonobe on 2023/10/12.
+//  Created by tsonobe on 2023/10/11.
 //
 
 import SwiftUI
 
-struct EditEvent: View {
+struct AddEvent: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) var dismiss
-    var selectedEvent: Event
+    var selectedDate: Date
     
     @State private var title: String = ""
     @State private var detail: String = ""
     @State private var startDate: Date = Date()
     @State private var endDate: Date = Date()
     
-    init(selectedEvent: Event) {
-        self.selectedEvent = selectedEvent
-        _title = State(initialValue: selectedEvent.title)
-        _detail = State(initialValue: selectedEvent.detail)
-        _startDate = State(initialValue: selectedEvent.startDate)
-        _endDate = State(initialValue: selectedEvent.endDate)
+    init(selectedDate: Date) {
+        self.selectedDate = selectedDate
+        _startDate = State(initialValue: selectedDate)
+        _endDate = State(initialValue: selectedDate)
     }
-        
+    
     var body: some View {
+        let _ = print("selected Date : \(selectedDate)")
         NavigationStack {
             Form {
                 Section(header: Text("Basic")) {
                     TextField("Title", text: $title)
                     TextField("Detail", text: $detail)
                 }
-                let _ = print(selectedEvent)
+                
                 Section {
                     DatePicker(
                         "Start",
@@ -56,13 +55,12 @@ struct EditEvent: View {
                 
                 
                 Section {
-                    Button("Update") {
-                        selectedEvent.title = title
-                        selectedEvent.detail = detail
-                        selectedEvent.startDate = startDate
-                        selectedEvent.endDate = endDate
+                    Button("add") {
+                        let newEvent = Event(id: UUID(), title: title, detail: detail, startDate: startDate, endDate: endDate, createdData: Date())
+                        context.insert(newEvent)
                         dismiss()
                     }
+                    .disabled(title.isEmpty || startDate > endDate)
                 }
             }
         }
