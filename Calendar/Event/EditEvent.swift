@@ -12,10 +12,10 @@ struct EditEvent: View {
     @Environment(\.dismiss) var dismiss
     var selectedEvent: Event
     
-    @State private var title: String = ""
-    @State private var detail: String = ""
-    @State private var startDate: Date = Date()
-    @State private var endDate: Date = Date()
+    @State private var title: String
+    @State private var detail: String
+    @State private var startDate: Date
+    @State private var endDate: Date
     
     init(selectedEvent: Event) {
         self.selectedEvent = selectedEvent
@@ -32,19 +32,13 @@ struct EditEvent: View {
                     TextField("Title", text: $title)
                     TextField("Detail", text: $detail)
                 }
-                let _ = print(selectedEvent)
+                
                 Section {
-                    DatePicker(
-                        "Start",
-                        selection: $startDate
-                    )
-                    .foregroundStyle(startDate > endDate ? .red : .primary)
+                    DatePicker("Start", selection: $startDate)
+                        .foregroundStyle(startDate > endDate ? .red : .primary)
                     
-                    DatePicker(
-                        "End",
-                        selection: $endDate
-                    )
-                    .foregroundStyle(startDate > endDate ? .red : .primary)
+                    DatePicker("End",selection: $endDate)
+                        .foregroundStyle(startDate > endDate ? .red : .primary)
                 } header: {
                     Text("Start Date ~ End Date")
                 } footer: {
@@ -53,7 +47,6 @@ struct EditEvent: View {
                         .font(.caption2)
                         .opacity(startDate > endDate ? 1 : 0)
                 }
-                
                 
                 Section {
                     Button("Update") {
@@ -64,7 +57,6 @@ struct EditEvent: View {
                         dismiss()
                     }
                     .disabled(title.isEmpty || startDate > endDate)
-
                 }
             }
         }

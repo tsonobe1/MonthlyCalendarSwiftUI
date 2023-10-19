@@ -12,23 +12,6 @@ extension Date {
     func getWeekDay() -> Int {
         return Calendar.current.component(.weekday, from: self) - 1
     }
-    
-    var firstDayOfNextMonth: Date? {
-        let calendar = Calendar.current
-        if let nextMonth = calendar.date(byAdding: .month, value: 1, to: self) {
-            return calendar.date(from: calendar.dateComponents([.year, .month], from: nextMonth))
-        }
-        return nil
-    }
-    
-    var lastDayOfPreviousMonth: Date? {
-        let calendar = Calendar.current
-        if let firstDayOfCurrentMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: self)),
-           let lastDayOfPreviousMonth = calendar.date(byAdding: .day, value: -1, to: firstDayOfCurrentMonth) {
-            return lastDayOfPreviousMonth
-        }
-        return nil
-    }
 }
 
 

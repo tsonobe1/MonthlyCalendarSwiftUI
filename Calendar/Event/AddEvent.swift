@@ -24,7 +24,6 @@ struct AddEvent: View {
     }
     
     var body: some View {
-        let _ = print("selected Date : \(selectedDate)")
         NavigationStack {
             Form {
                 Section(header: Text("Basic")) {
@@ -33,17 +32,10 @@ struct AddEvent: View {
                 }
                 
                 Section {
-                    DatePicker(
-                        "Start",
-                        selection: $startDate
-                    )
-                    .foregroundStyle(startDate > endDate ? .red : .primary)
-                    
-                    DatePicker(
-                        "End",
-                        selection: $endDate
-                    )
-                    .foregroundStyle(startDate > endDate ? .red : .primary)
+                    DatePicker("Start", selection: $startDate)
+                        .foregroundStyle(startDate > endDate ? .red : .primary)
+                    DatePicker("End",selection: $endDate)
+                        .foregroundStyle(startDate > endDate ? .red : .primary)
                 } header: {
                     Text("Start Date ~ End Date")
                 } footer: {
@@ -55,8 +47,15 @@ struct AddEvent: View {
                 
                 
                 Section {
-                    Button("add") {
-                        let newEvent = Event(id: UUID(), title: title, detail: detail, startDate: startDate, endDate: endDate, createdData: Date())
+                    Button("Add") {
+                        let newEvent = Event(
+                            id: UUID(),
+                            title: title,
+                            detail: detail,
+                            startDate: startDate,
+                            endDate: endDate,
+                            createdData: Date()
+                        )
                         context.insert(newEvent)
                         dismiss()
                     }

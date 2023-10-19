@@ -14,10 +14,10 @@ struct EventList: View {
     @Query(sort: \Event.startDate, order: .forward) var events: [Event]
     
     @Binding var selectedDate: Date
+    @State private var selectedEvent: Event?
     @State private var isAddSheet: Bool = false
-    @State private var isEditSheet = false
     
-    // selectedDateの日付(00:00~23:00)に存在するEventを取得
+    // selectedDateと同じ日付(00:00~23:59)に存在するEventのみ抽出する
     var filterdEvents: [Event] {
         return events.filter({
             dateIsInRange(selectedDate, startDate: $0.startDate, endDate: $0.endDate)
@@ -52,7 +52,7 @@ struct EventList: View {
                             .contextMenu(menuItems: {
                                 // Eventを編集するボタン
                                 Button {
-                                    isEditSheet.toggle()
+                                    selectedEvent = event  // 選択されたeventを保存
                                 } label: {
                                     Label("Edit", systemImage: "pencil")
                                 }
@@ -63,13 +63,14 @@ struct EventList: View {
                                     Label("Delete", systemImage: "trash")
                                 }
                             })
-                        // Eventを編集するシート
-                            .sheet(isPresented: $isEditSheet){
-                                EditEvent(selectedEvent: event)
-                            }
+                        
                     }
                 }
             }
+        }
+        // Eventを編集するシート
+        .sheet(item: $selectedEvent){ event in
+            EditEvent(selectedEvent: event)
         }
         // Eventを追加するシート
         .sheet(isPresented: $isAddSheet) {
@@ -77,28 +78,19 @@ struct EventList: View {
         }
     }
     
-    /// 与えられた日付が指定された範囲内にあるかどうかを判断する関数。
-    ///
-    /// - Parameters:
-    ///   - dateC: 確認したい日付。
-    ///   - startDate: 範囲の開始日付。
-    ///   - endDate: 範囲の終了日付。
-    /// - Returns: 日付が範囲内であれば`true`、そうでなければ`false`。
-    func dateIsInRange(_ dateC: Date, startDate: Date, endDate: Date) -> Bool {
+    // 第一引数のdateが、startDateとendDateの範囲内にあるかどうかを判定する
+    func dateIsInRange(_ date: Date, startDate: Date, endDate: Date) -> Bool {
         let calendar = Calendar.current
-        // 日付から年、月、日のみの情報を取得
-        let componentsC = calendar.dateComponents([.year, .month, .day], from: dateC)
-        let dateOnlyC = calendar.date(from: componentsC)!
         
-        let componentsStart = calendar.dateComponents([.year, .month, .day], from: startDate)
-        let dateOnlyStart = calendar.date(from: componentsStart)!
+        // 各引数のDateの時間部分を全て00:00:00にする
+        let dateOnly = calendar.startOfDay(for: date)
+        let startDateOnly = calendar.startOfDay(for: startDate)
+        let endDateOnly = calendar.startOfDay(for: endDate)
         
-        let componentsEnd = calendar.dateComponents([.year, .month, .day], from: endDate)
-        let dateOnlyEnd = calendar.date(from: componentsEnd)!
-        
-        // 日付の範囲内にあるかどうかを判断
-        return dateOnlyC >= dateOnlyStart && dateOnlyC <= dateOnlyEnd
+        // 時間部分の条件を同じ(00:00:00)にしたため、純粋に年月日のみに基づいて範囲比較が行える
+        return dateOnly >= startDateOnly && dateOnly <= endDateOnly
     }
+
 }
 
 #Preview {

@@ -22,7 +22,7 @@ func generateDatesOfMonth(for selectedMonth: Date) -> [Date]? {
     
     var dates: [Date] = []
     var currentDate = startOfMonth
-    // currentDateがendOfMonthに追いつくまで、currentDateを加算しながら配列に追加する
+    // currentDateがendOfMonthに達するまで、currentDateを加算しながら配列に追加する
     while currentDate <= endOfMonth {
         dates.append(currentDate)
         

@@ -41,7 +41,7 @@ struct MonthlyCalendar: View {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(.clear)
                         .frame(width: 60, height: 60)
-                        // 設置した42個のブロックの上に、日付を表示する
+                    // 設置した42個のブロックの上に、日付を表示する
                         .overlay {
                             if (index >= start && index < end){
                                 let i = index - start

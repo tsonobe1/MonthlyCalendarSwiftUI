@@ -12,13 +12,11 @@ struct ContentView: View {
     @State var selectedDate: Date = Date()
     
     var body: some View {
-        NavigationStack{
-            VStack{
-                MonthSelector(selectedMonth: $selectedMonth, selectedDate: $selectedDate)
-                MonthlyCalendar(selectedMonth: $selectedMonth, selectedDate: $selectedDate)
-            }
-            .padding()
+        VStack{
+            MonthSelector(selectedMonth: $selectedMonth, selectedDate: $selectedDate)
+            MonthlyCalendar(selectedMonth: $selectedMonth, selectedDate: $selectedDate)
         }
+        .padding()
     }
 }
 
