@@ -42,7 +42,7 @@ struct EventList: View {
             ScrollView{
                 // 操作日にEventが存在しない場合
                 if filterdEvents.isEmpty {
-                    ContentUnavailableView {Label("No Event", systemImage: "plus")}
+                    ContentUnavailableView {Label("イベントなし", systemImage: "plus")}
                         .onTapGesture {isAddSheet.toggle()}
                 } else {
                     // 操作日にEventが存在する場合
@@ -54,13 +54,13 @@ struct EventList: View {
                                 Button {
                                     selectedEvent = event  // 選択されたeventを保存
                                 } label: {
-                                    Label("Edit", systemImage: "pencil")
+                                    Label("編集", systemImage: "pencil")
                                 }
                                 // Eventを削除するボタン
                                 Button {
                                     context.delete(event)
                                 } label: {
-                                    Label("Delete", systemImage: "trash")
+                                    Label("削除", systemImage: "trash")
                                 }
                             })
                         

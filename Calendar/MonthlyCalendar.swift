@@ -13,7 +13,7 @@ struct MonthlyCalendar: View {
     @Binding var selectedMonth: Date
     @Binding var selectedDate: Date
     
-    let week = ["Sum", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    let week = ["日", "月", "火", "水", "木", "金", "土"]
     // selectedMonthの属する月の、初日~末日のDateのリストを生成
     var dateOfMonth: [Date] {
         generateDatesOfMonth(for: selectedMonth)!

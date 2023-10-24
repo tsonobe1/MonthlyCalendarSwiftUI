@@ -18,7 +18,7 @@ struct MonthSelector: View {
                 selectedMonth = Date()
                 selectedDate = Date()
             }, label: {
-                Text("Today")
+                Text("今日")
             })
             HStack(alignment: .center) {
                 // 前の月を表示
