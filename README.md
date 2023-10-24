@@ -14,11 +14,8 @@
 
 ## 以下はiOSのシミュレーター上で操作したときの様子です
 ### 月ごとのカレンダーの表示, 操作日に戻る
-![Simulator Screen Recording - iPhone 15 Pro - 2023-10-19 at 07 50 47](https://github.com/tsonobe1/DailyCalender/assets/40202387/8e48eca7-18ed-46d3-ae99-f6f8306f5a9c)
+![Simulator Screen Recording - iPhone 15 Pro - 2023-10-25 at 07 55 02](https://github.com/tsonobe1/MonthlyCalendarSwiftUI/assets/40202387/82e5499f-fe11-4c52-b1ae-37b23e30c831)
 
-### 予定の追加
-![Simulator Screen Recording - iPhone 15 Pro - 2023-10-19 at 07 51 48](https://github.com/tsonobe1/DailyCalender/assets/40202387/666a6577-0044-4bf9-84d1-f7c557497ce3)
-
-### 予定の編集、削除
-![Simulator Screen Recording - iPhone 15 Pro - 2023-10-19 at 07 52 13](https://github.com/tsonobe1/DailyCalender/assets/40202387/731e3dd8-3e84-4d6f-838a-01fef1746d4e)
+### 予定の追加、編集、削除
+![Simulator Screen Recording - iPhone 15 Pro - 2023-10-25 at 07 55 37](https://github.com/tsonobe1/MonthlyCalendarSwiftUI/assets/40202387/dd8333b5-a9d3-4acd-b5d3-953ecfdbc70d)
 
