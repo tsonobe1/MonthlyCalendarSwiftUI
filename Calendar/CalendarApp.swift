@@ -14,6 +14,7 @@ struct CalendarApp: App {
         WindowGroup {
             ContentView()
         }
+        // Eventモデルのインスタンスの読み書きを可能にする
         .modelContainer(for: Event.self)
     }
 }
